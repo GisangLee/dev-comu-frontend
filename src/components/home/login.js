@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, TextField, CssBaseline, Box, FormControl, Grid, FormControlLabel, Checkbox, Typography, FormHelperText } from '@mui/material';
-import { SignupApi } from '../../api/accounts';
+import { Button, Container, TextField, CssBaseline, Box, FormControl, Grid, Typography, FormHelperText } from '@mui/material';
+import { LoginApi } from '../../api/accounts';
 import styled from "styled-components";
 
 const FormHelperTexts = styled(FormHelperText)`
@@ -12,7 +12,6 @@ const FormHelperTexts = styled(FormHelperText)`
 `;
 
 const Login = () => {
-    const [emailError, setEmailError] = useState('');
     const [passwordState, setPasswordState] = useState('');
     const [registerError, setRegisterError] = useState('');
     const navigate = useNavigate();
@@ -22,17 +21,17 @@ const Login = () => {
 
         const data = new FormData(e.currentTarget);
         
-        let joinData = {
-            email: data.get('email'),
+        const joinData = {
+            username: data.get('username'),
             password: data.get('password')
         };
 
-        const { email, password } = joinData;
+        const { password } = joinData;
 
-        // 이메일 유효성 체크
-        const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-        if (!emailRegex.test(email)) setEmailError('올바른 이메일 형식이 아닙니다.');
-        else setEmailError('');
+        // // 이메일 유효성 체크
+        // const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        // if (!emailRegex.test(username)) setEmailError('올바른 이메일 형식이 아닙니다.');
+        // else setEmailError('');
 
         // 비밀번호 유효성 체크
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -41,16 +40,12 @@ const Login = () => {
         else setPasswordState('');
 
         if (
-            emailRegex.test(email) &&
+            //emailRegex.test(email) &&
             passwordRegex.test(password)
         ) {
             // API 요청
-            joinData = {
-                email: data.get('email'),
-                password: data.get('password'),
-            };
             console.log(joinData);
-            //SignupApi(joinData, navigate, setRegisterError);
+            LoginApi(joinData, navigate, setRegisterError);
         }
     };
     
@@ -76,14 +71,12 @@ const Login = () => {
                                 required
                                 autoFocus
                                 fullWidth
-                                type="email"
-                                id="email"
-                                name="email"
+                                type="text"
+                                id="username"
+                                name="username"
                                 label="닉네임 또는 이메일"
-                                error={ emailError !== '' || false }
                             />
                         </Grid>
-                        <FormHelperTexts>{emailError}</FormHelperTexts>
                         <Grid item xs={12}>
                             <TextField
                                 required
@@ -112,7 +105,7 @@ const Login = () => {
             </Box>
             <Grid display={ "flex" }>
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         sx={ { mt: 3, mb: 2, mr: 3, bgcolor: "error.dark", ":hover": { bgcolor: "error.light" } } }
@@ -121,7 +114,7 @@ const Login = () => {
                         카카오 로그인
                     </Button>
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         sx={ { mt: 3, mb: 2, bgcolor: "info.dark", ":hover": { bgcolor: "info.main" } } }
