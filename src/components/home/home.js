@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../common/nav';
 import TextField from '@mui/material/TextField';
 import { GetPostsApi } from '../../api/posts';
-import Post from './posts';
+import Posts from './posts';
 
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
                 <TextField size="small" label="검색어" color="warning"/>
             </Box>
             <Box sx={{ bgcolor:"background.papers", height: "100vh", paddingLeft: "10rem", paddingRight: "4rem", marginTop: "10rem"}}>
-                { loading ? "로딩중" : posts.map((post, idx) => <Post key={ post.pk } post={post} />) }
+                { loading ? "로딩중" : <Posts posts={posts}/> }
             </Box>
         </>
     )
