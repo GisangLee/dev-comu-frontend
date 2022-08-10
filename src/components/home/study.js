@@ -3,16 +3,16 @@ import React from 'react';
 import Nav from '../common/nav';
 
 
-const Home = () => {
+const Study = () => {
     return (
         <>
             <Nav/>
             <Box sx={{ bgcolor:"error.main", height: "100vh", paddingLeft: "9rem"}}>
-                Q & A
+                Study
             </Box>
         </>
     )
 };
 
 
-export default Home;
+export default Study;

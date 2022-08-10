@@ -3,16 +3,16 @@ import React from 'react';
 import Nav from '../common/nav';
 
 
-const Home = () => {
+const Challenges = () => {
     return (
         <>
             <Nav/>
             <Box sx={{ bgcolor:"error.main", height: "100vh", paddingLeft: "9rem"}}>
-                Q & A
+                공모전
             </Box>
         </>
     )
 };
 
 
-export default Home;
+export default Challenges;
