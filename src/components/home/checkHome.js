@@ -7,12 +7,13 @@ const CheckHome = ({ jwt }) => {
     const { token, setTokenHandler } = useContext(IsLoggedInContext);
 
     //const { token } = TOKEN;
-    console.log(token);
+    console.log(token === "null");
+    console.log(typeof(token));
 
-    if (token !== null){
-        return <Navigate to="/home"/>
-    }else{
+    if (token === null || token === "null"){
         return <Navigate to="/login"/>
+    }else{
+        return <Navigate to="/home"/>
     }
 
 };

@@ -16,7 +16,7 @@ function getLocalStorage(key, initialValue) {
     } catch (e) {
         // if error, return initial value
         return initialValue;
-}
+    }
 }
 
 export const IsLoggedInContext = createContext({
