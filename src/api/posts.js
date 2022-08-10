@@ -14,7 +14,7 @@ export const GetPostsApi = async () => {
     const page = 1;
 
     try{
-        const posts = await axios.get(`/api-v1/posts?page=${page}`, { headers }).then(res => res.data);
+        const posts = await axios.get(`/api-v1/posts?page=${page}&category=${'QA'}`, { headers }).then(res => res.data);
 
         return await posts;
 
