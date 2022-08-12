@@ -29,6 +29,7 @@ const Nav = () => {
                 <LinkTab label="스터디 / 모임" href="/home/study"></LinkTab>
                 <LinkTab label="공모전 / 대회" href="/home/challenges"></LinkTab>
                 <LinkTab label="구인구직" href="/home/jobs"></LinkTab>
+                <LinkTab label="글 작성하기" href="/home/write-post"></LinkTab>
             </Tabs>
         </Box>
     );
