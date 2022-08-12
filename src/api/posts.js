@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import ENV from '../config';
 
-export const GetPostsApi = async () => {
+export const GetPostsApi = async (category) => {
     const env = ENV();
 
     const headers = {
@@ -14,7 +14,7 @@ export const GetPostsApi = async () => {
     const page = 1;
 
     try{
-        const posts = await axios.get(`/api-v1/posts?page=${page}&category=${'QA'}`, { headers }).then(res => res.data);
+        const posts = await axios.get(`/api-v1/posts?page=${page}&category=${category}`, { headers }).then(res => res.data);
 
         return await posts;
 

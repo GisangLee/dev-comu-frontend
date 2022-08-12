@@ -13,18 +13,16 @@ const SearchPostsApi = async (reqData) => {
 
     const page = 1;
 
-    
-
     if (typeof(reqData.keyword) === "string" && reqData.keyword.length === 0) {
         alert("검색어를 입력해주세요");
         window.location.reload();
 
     }else {
         const keyword = reqData.keyword;
-        console.log(reqData);
+        const category = reqData.category;
     
         try{
-            const posts = await axios.get(`/api-v1/posts/post/${keyword}?page=${page}`, { headers }).then(res => res.data);
+            const posts = await axios.get(`/api-v1/posts/post/${keyword}?page=${page}&category=${category}`, { headers }).then(res => res.data);
     
             return await posts;
     

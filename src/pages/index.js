@@ -9,6 +9,7 @@ import Login from '../components/home/login';
 import PostDetail from '../components/home/postdetail';
 import Signup from '../components/home/signup';
 import Study from '../components/home/study';
+import WritePost from '../components/home/writePost';
 
 
 const Root = () => {
@@ -21,6 +22,7 @@ const Root = () => {
             <Route path="/home/study" element={<Study/>}></Route>
             <Route path="/home/challenges" element={<Challenges/>}></Route>
             <Route path="/home/jobs" element={<Jobs/>}></Route>
+            <Route path="/home/write-post" element={<WritePost/>}></Route>
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/signup" element={<Signup/>}></Route>
             <Route path="/post/:post_id" element={<PostDetail/>}></Route>

@@ -14,7 +14,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const res = GetPostsApi();
+        const res = GetPostsApi("qa");
         res.then(data => setPosts(data.message));
         setLoading(false);
     }, []);
@@ -25,7 +25,8 @@ const Home = () => {
         const data = new FormData(e.currentTarget);
         
         const reqData = {
-            keyword: data.get('keyword')
+            keyword: data.get('keyword'),
+            category: "qa"
         };
 
         const postsByKeyword = SearchPostsApi(reqData);
